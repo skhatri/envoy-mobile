@@ -139,4 +139,13 @@ class JniLibrary {
    *         configurations.
    */
   public static native String templateString();
+
+  /**
+   * Provides a configuration template that may be used for building platform
+   * filter config chains.
+   *
+   * @return A template that may be used as a starting point for constructing
+   *         filter platform filter configuration.
+   */
+  public static native String filterTemplateString();
 }
