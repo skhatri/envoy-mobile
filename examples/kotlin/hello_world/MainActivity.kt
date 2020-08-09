@@ -13,6 +13,7 @@ import io.envoyproxy.envoymobile.RequestHeadersBuilder
 import io.envoyproxy.envoymobile.RequestMethod
 import io.envoyproxy.envoymobile.StreamClient
 import io.envoyproxy.envoymobile.UpstreamHttpProtocol
+import io.envoyproxy.envoymobile.helloenvoykotlin.DemoFilter
 import io.envoyproxy.envoymobile.shared.Failure
 import io.envoyproxy.envoymobile.shared.ResponseRecyclerViewAdapter
 import io.envoyproxy.envoymobile.shared.Success
@@ -36,7 +37,9 @@ class MainActivity : Activity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    streamClient = AndroidStreamClientBuilder(application).build()
+    streamClient = AndroidStreamClientBuilder(application)
+      .addFilter({ DemoFilter() })
+      .build()
 
     recyclerView = findViewById(R.id.recycler_view) as RecyclerView
     recyclerView.layoutManager = LinearLayoutManager(this)
